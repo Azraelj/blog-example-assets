@@ -8,7 +8,7 @@
 
 <!-- /TOC -->
 
-# webpack打包相互引用的模块
+# webpack打包相互引用的模块
 
 ## 示例项目([github]())
 
@@ -106,7 +106,7 @@ var _console = exports._console = function _console() {
 2. 遇到import a.js
 3. 在installedModules对象上设置a.js的key,加载a.js并执行
 4. 遇到import index.js
-5. 检查，发现installedModules上已经存在index.js的key,直接读对象上缓存的exports(其实这里可能只在exports声明了属性名，并没有赋值)
+5. 检查，发现installedModules上已经存在index.js的key,直接读对象上缓存的exports(其实这里可能只在exports声明了属性名，并没有赋值)
 6. 执行exports上的_console函数(如果属性还没有被赋值就会出错)
 
 export的方式会影响以上过程的5、6步骤
