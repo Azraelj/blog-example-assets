@@ -1,8 +1,3 @@
----
-title: webpack针对循环引用以及赋值export的处理注意事项
-date: 2018-03-08 22:04:19
-tags:
----
 <!-- TOC -->
 
 - [webpack打包相互引用的模块](#webpack打包相互引用的模块)
@@ -17,6 +12,7 @@ tags:
 
 ## 示例项目([github]())
 
+
 ## 遇到的问题
 在有2个或2个以上的文件之间的相互依赖关系构成闭环的时候，有时会出现<code>Can't read Property 'xxx' of undefined</code>或者<code>(0,xxx) is not a function</code>这类的错误，比如：
 
@@ -29,6 +25,7 @@ tags:
 这就跟webpack打包后的代码执行逻辑有关
 
 webpack的头部启动代码中，通过闭包中的installedModules对象，将模块名或者id作为对象的key来缓存各个模块的export的值，通过判断installedModules上是否缓存了对应模块的key来判断是否已经加载了模块
+
 
 ```javascript
 // Check if module is in cache
