@@ -1,3 +1,8 @@
+---
+title: webpack针对循环引用以及赋值export的处理注意事项
+date: 2018-03-08 22:04:19
+tags:
+---
 <!-- TOC -->
 
 - [webpack打包相互引用的模块](#webpack打包相互引用的模块)
@@ -13,7 +18,7 @@
 ## 示例项目([github]())
 
 ## 遇到的问题
-在有2个或2个以上的文件相互依赖的时候，有时会出现<code>Can't read Property 'xxx' of undefined</code>或者<code>(0,xxx) is not a function</code>这类的错误，比如：
+在有2个或2个以上的文件之间的相互依赖关系构成闭环的时候，有时会出现<code>Can't read Property 'xxx' of undefined</code>或者<code>(0,xxx) is not a function</code>这类的错误，比如：
 
 ```
 示例项目中的src/index.js引用src/a.js,而src/a.js中也引用了src/index.js
@@ -45,6 +50,7 @@ modules[moduleId].call(module.exports, module, module.exports, __webpack_require
 就拿export function.js中的代码和export const _var.js中的代码为例:
 
 > export function.js
+
 ```javascript
 
 /***/ (function(module, exports, __webpack_require__) {
@@ -111,5 +117,6 @@ var _console = exports._console = function _console() {
 export的方式会影响以上过程的5、6步骤
 
 ## 如何解决
-1. 打破文件间的双向依赖
-2. 双向依赖的情况下，只使用export function funcName(){}
+1. 打破文件间的依赖关系的闭环
+2. 依赖关系闭环的情况下，只使用export function funcName(){}
+
