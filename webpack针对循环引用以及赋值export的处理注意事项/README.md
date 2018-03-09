@@ -12,7 +12,6 @@
 
 ## 示例项目([github]())
 
-
 ## 遇到的问题
 在有2个或2个以上的文件之间的相互依赖关系构成闭环的时候，有时会出现<code>Can't read Property 'xxx' of undefined</code>或者<code>(0,xxx) is not a function</code>这类的错误，比如：
 
@@ -25,7 +24,6 @@
 这就跟webpack打包后的代码执行逻辑有关
 
 webpack的头部启动代码中，通过闭包中的installedModules对象，将模块名或者id作为对象的key来缓存各个模块的export的值，通过判断installedModules上是否缓存了对应模块的key来判断是否已经加载了模块
-
 
 ```javascript
 // Check if module is in cache
@@ -116,4 +114,8 @@ export的方式会影响以上过程的5、6步骤
 ## 如何解决
 1. 打破文件间的依赖关系的闭环
 2. 依赖关系闭环的情况下，只使用export function funcName(){}
+
+
+
+
 
