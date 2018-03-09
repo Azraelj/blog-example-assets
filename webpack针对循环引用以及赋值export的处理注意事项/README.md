@@ -10,7 +10,7 @@
 
 # webpack打包相互引用的模块
 
-## 示例项目([github]())
+## 示例项目([github](https://github.com/hq229075284/blog-example-assets/tree/master/webpack%E9%92%88%E5%AF%B9%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E4%BB%A5%E5%8F%8A%E8%B5%8B%E5%80%BCexport%E7%9A%84%E5%A4%84%E7%90%86%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9))
 
 ## 遇到的问题
 在有2个或2个以上的文件之间的相互依赖关系构成闭环的时候，有时会出现<code>Can't read Property 'xxx' of undefined</code>或者<code>(0,xxx) is not a function</code>这类的错误，比如：
